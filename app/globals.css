@@ -1,0 +1,360 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-gray-200;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Compact AQI popup styling for Leaflet */
+.aqi-popup .leaflet-popup-content-wrapper {
+  background: #0b1220;
+  color: #e5e7eb;
+  border: 1px solid #1f2937;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+.aqi-popup .leaflet-popup-tip {
+  background: #0b1220;
+  border: 1px solid #1f2937;
+}
+.aqi-card {
+  min-width: 160px;
+  max-width: 200px;
+  display: grid;
+  grid-template-rows: auto auto auto;
+  row-gap: 4px;
+}
+.aqi-value {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1;
+}
+.aqi-cat {
+  font-size: 11px;
+  font-weight: 700;
+  color: #9ca3af;
+  text-transform: uppercase;
+}
+.aqi-coord {
+  font-size: 10px;
+  color: #6b7280;
+}
+
+html, body, #__next {
+  height: 100%;
+}
+
+/* Exact match to the image styling */
+body {
+  background: radial-gradient(ellipse at 50% -20%, #000022 0%, #001144 70%, #000018 100%);
+  color: #ffffff;
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Star field */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.6) 50%, transparent 51%),
+    radial-gradient(1px 1px at 30% 80%, rgba(255,255,255,0.4) 50%, transparent 51%),
+    radial-gradient(1px 1px at 70% 30%, rgba(255,255,255,0.5) 50%, transparent 51%),
+    radial-gradient(1px 1px at 90% 60%, rgba(255,255,255,0.35) 50%, transparent 51%),
+    radial-gradient(1px 1px at 50% 50%, rgba(255,255,255,0.4) 50%, transparent 51%);
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.35;
+}
+
+/* Header styling */
+header {
+  background: #1f2937;
+  border-bottom: 1px solid #374151;
+}
+
+/* Card styling to match image */
+.bg-gray-700 {
+  background-color: #374151;
+}
+
+.bg-gray-800 {
+  background-color: #1f2937;
+}
+
+.bg-gray-900 {
+  background-color: #111827;
+}
+
+.border-gray-600 {
+  border-color: #4b5563;
+}
+
+.border-gray-700 {
+  border-color: #374151;
+}
+
+/* Toggle switches */
+.toggle-switch {
+  position: relative;
+  width: 48px;
+  height: 24px;
+  background-color: #4b5563;
+  border-radius: 12px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.toggle-switch.active {
+  background-color: #2563eb;
+}
+
+.toggle-switch::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.toggle-switch.active::after {
+  transform: translateX(24px);
+}
+
+/* Button styling */
+button {
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+/* Input styling */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="tel"],
+select,
+textarea {
+  background-color: #4b5563;
+  border: 1px solid #6b7280;
+  color: #ffffff;
+  border-radius: 6px;
+  padding: 8px 12px;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1f2937;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4b5563;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+/* Map styling */
+#map {
+  background: #111827;
+}
+
+/* AQI Color classes */
+.aqi-good { color: #00e400; }
+.aqi-moderate { color: #ffff00; }
+.aqi-unhealthy-sensitive { color: #ff7e00; }
+.aqi-unhealthy { color: #ff0000; }
+.aqi-very-unhealthy { color: #8f3f97; }
+.aqi-hazardous { color: #7e0023; }
+
+/* Animation for live data */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.live-indicator {
+  animation: pulse 2s infinite;
+}
+
+/* Grid pattern for map background */
+.map-grid {
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Modern animations and effects */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Enhanced hover effects */
+.group:hover {
+  transform: translateY(-2px);
+}
+
+/* Gradient text animation */
+.gradient-text {
+  background: linear-gradient(45deg, #00d4ff, #0066cc, #00d4ff);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 3s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #0066cc, #00d4ff);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #00d4ff, #0066cc);
+}
